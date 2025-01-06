@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JK LINE</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <button onclick="addRow()">Add Row</button>
+    <button onclick="addColumn()">Add Column</button>
+    <button onclick="deleteRow()">Delete Row</button>
+    <button onclick="deleteColumn()">Delete Column</button>
+    <button onclick="clearTable()">Clear Table</button>
+    <button onclick="saveTable()">Save Table</button>
+    <button onclick="goToDetails()">Details</button>
+  </div>
+
+  <!-- Editable Table -->
+  <div class="table-container">
+    <table id="editorTable" contenteditable="true">
+      <tr>
+        <td onclick="customizeColumn(this)">Cell 1</td>
+        <td onclick="customizeColumn(this)">Cell 2</td>
+        <td onclick="customizeColumn(this)">Cell 3</td>
+      </tr>
+      <tr>
+        <td onclick="customizeColumn(this)">Cell 4</td>
+        <td onclick="customizeColumn(this)">Cell 5</td>
+        <td onclick="customizeColumn(this)">Cell 6</td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
