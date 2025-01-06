@@ -6,8 +6,9 @@ function addRow() {
 
   for (let i = 0; i < columnCount; i++) {
     const newCell = newRow.insertCell();
-    newCell.contentEditable = "true";
-    newCell.onclick = () => customizeColumn(newCell);
+    newCell.contentEditable = false;
+    newCell.onclick = () => makeEditable(newCell);
+    newCell.ondblclick = () => setColumnColor(newCell);
     newCell.innerText = `New Cell`;
   }
 }
@@ -18,8 +19,9 @@ function addColumn() {
 
   for (let i = 0; i < table.rows.length; i++) {
     const newCell = table.rows[i].insertCell();
-    newCell.contentEditable = "true";
-    newCell.onclick = () => customizeColumn(newCell);
+    newCell.contentEditable = false;
+    newCell.onclick = () => makeEditable(newCell);
+    newCell.ondblclick = () => setColumnColor(newCell);
     newCell.innerText = `New Cell`;
   }
 }
@@ -57,21 +59,14 @@ function clearTable() {
   }
 }
 
-// Function to save the table content as a file
-function saveTable() {
-  const table = document.getElementById("editorTable");
-  const tableHTML = table.outerHTML;
-
-  // Create a blob and download the file
-  const blob = new Blob([tableHTML], { type: "text/html" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = "table.html";
-  link.click();
+// Function to make a cell editable
+function makeEditable(cell) {
+  cell.contentEditable = "true";
+  cell.focus();
 }
 
-// Function to customize the column color
-function customizeColumn(cell) {
+// Function to set column color on double click
+function setColumnColor(cell) {
   const table = document.getElementById("editorTable");
   const columnIndex = cell.cellIndex;
 
@@ -85,7 +80,70 @@ function customizeColumn(cell) {
   }
 }
 
-// Function to navigate to the details page
+// Function to save the table content as a file
+function saveTable() {
+  const tableTitle = document.getElementById("tableTitle").innerText; // Get the title text
+  const footerText = document.getElementById("footerText").innerText; // Get the footer text
+  const table = document.getElementById("editorTable"); // Get the table
+  const tableHTML = table.outerHTML; // Get the table's HTML
+
+  // Create the HTML content with styling for title, table, and footer
+  const content = `
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${tableTitle}</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+      h1 {
+        font-size: 24px;
+        margin: 20px 0;
+        text-transform: uppercase;
+      }
+      table {
+        margin: 20px auto;
+        border-collapse: collapse;
+        width: 80%;
+      }
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+      }
+      footer {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>${tableTitle}</h1>
+    ${tableHTML}
+    <footer>
+      <p>${footerText}</p>
+    </footer>
+  </body>
+  </html>
+  `;
+
+  // Create a Blob and save it as an HTML file
+  const blob = new Blob([content], { type: "text/html" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "Save JKline"; // File name
+  link.click();
+}
+
+
+// Function to navigate to the details page or website
 function goToDetails() {
-  window.location.href = "https://jamshedkhan319.github.io/jk";
+  window.location.href = "https://jamshedkhan319.github.io/jk"; // Replace with your desired URL
 }
