@@ -7,31 +7,41 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Title Section -->
+  <div class="title-section">
+    <h1 id="tableTitle" contenteditable="true">Enter Your Jk Line Hare</h1>
+  </div>
+
   <!-- Toolbar -->
   <div class="toolbar">
-    <button onclick="addRow()">Add Row</button>
-    <button onclick="addColumn()">Add Column</button>
-    <button onclick="deleteRow()">Delete Row</button>
-    <button onclick="deleteColumn()">Delete Column</button>
-    <button onclick="clearTable()">Clear Table</button>
-    <button onclick="saveTable()">Save Table</button>
-    <button onclick="goToDetails()">Details</button>
+    <button onclick="addRow()">Add Box</button>
+    <button onclick="deleteRow()">Delete Box</button>
+    <button onclick="addColumn()">Add Line</button>
+    <button onclick="deleteColumn()">Delete Line</button>
+    <button onclick="clearTable()">Clear Text</button>
+    <button onclick="saveTable()">Save Jk Line</button>
+    <button onclick="goToDetails()">Details JK</button>
   </div>
 
   <!-- Editable Table -->
   <div class="table-container">
-    <table id="editorTable" contenteditable="true">
+    <table id="editorTable">
       <tr>
-        <td onclick="customizeColumn(this)">Cell 1</td>
-        <td onclick="customizeColumn(this)">Cell 2</td>
-        <td onclick="customizeColumn(this)">Cell 3</td>
+        <td onclick="makeEditable(this)" ondblclick="setColumnColor(this)">Cell 1</td>
+        <td onclick="makeEditable(this)" ondblclick="setColumnColor(this)">Cell 2</td>
+        <td onclick="makeEditable(this)" ondblclick="setColumnColor(this)">Cell 3</td>
       </tr>
       <tr>
-        <td onclick="customizeColumn(this)">Cell 4</td>
-        <td onclick="customizeColumn(this)">Cell 5</td>
-        <td onclick="customizeColumn(this)">Cell 6</td>
+        <td onclick="makeEditable(this)" ondblclick="setColumnColor(this)">Cell 4</td>
+        <td onclick="makeEditable(this)" ondblclick="setColumnColor(this)">Cell 5</td>
+        <td onclick="makeEditable(this)" ondblclick="setColumnColor(this)">Cell 6</td>
       </tr>
     </table>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer-section">
+    <p id="footerText" contenteditable="true">copyright 2025 JK Line.</p>
   </div>
 
   <script src="script.js"></script>
