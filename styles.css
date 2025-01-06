@@ -6,6 +6,21 @@ body {
   background-color: #f3f3f3;
 }
 
+/* Title Section */
+.title-section {
+  text-align: center;
+  padding: 20px;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.title-section h1 {
+  font-size: 24px;
+  margin: 0;
+  cursor: text;
+  text-transform: uppercase;
+}
+
 /* Toolbar styling */
 .toolbar {
   display: flex;
@@ -52,8 +67,25 @@ td {
   text-align: center;
   min-width: 100px;
   height: 40px;
+  cursor: pointer;
 }
 
+/* Footer Section */
+.footer-section {
+  text-align: center;
+  padding: 10px;
+  background-color: #f1f1f1;
+  color: #555;
+  margin-top: 20px;
+}
+
+.footer-section p {
+  margin: 0;
+  cursor: text;
+  font-size: 14px;
+}
+
+/* Highlight when editing */
 td:focus {
   outline: 2px solid #4CAF50;
 }
